@@ -10,4 +10,4 @@
 - `pipenv install`
 - `pipenv shell`
 - `python app.py`
-- Go to `http://0.0.0.0:5000/`
+- Go to http://0.0.0.0:5000/
