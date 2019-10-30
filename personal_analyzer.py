@@ -37,17 +37,17 @@ def analyze_personality():
 
     #print(json_obj)
 
-    Ope = json_obj["personality"][0]["percentile"]
-    Con = json_obj["personality"][1]["percentile"]
-    Ext = json_obj["personality"][2]["percentile"]
-    Agr = json_obj["personality"][3]["percentile"]
-    Emo = json_obj["personality"][4]["percentile"]
-    print(Ope)
-    print(Con)
-    print(Ext)
-    print(Agr)
-    print(Emo)
+    ope = json_obj["personality"][0]["percentile"]
+    con = json_obj["personality"][1]["percentile"]
+    ext = json_obj["personality"][2]["percentile"]
+    agr = json_obj["personality"][3]["percentile"]
+    emo = json_obj["personality"][4]["percentile"]
+
+    dic = {'ope': ope, 'con': con, 'ext': ext, 'agr': agr, 'emo': emo}
+
+    return dic
 
 
 if __name__ == '__main__':
-    analyze_personality()
+    a = analyze_personality()
+    print(a)

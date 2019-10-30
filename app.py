@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
+import personal_analyzer
 
 app = Flask(__name__)
 
@@ -22,6 +23,21 @@ def index():
     # index.htmlをレンダリングする
     return render_template('index.html', message=message, title=title)
 
+
+@app.route('/personal_result')
+def personal_result():
+    title = '診断結果'
+
+    # 個人のデータを取得
+    score_dic = personal_analyzer.analyze_personality()
+
+    return render_template('personal_result.html', title=title, result=score_dic)
+
+
+
+
+
+
 # /post にアクセスした時の処理
 @app.route('/post', methods=['GET', 'POST'])
 def post():
@@ -29,8 +45,12 @@ def post():
     if request.method == 'POST':
         # リクエストフォームから名前を所得して
         name = request.form['name']
+
+        # 個人のデータを取得
+        score_dic = personal_analyzer.analyze_personality()
+
         # index.html をレンダリングする
-        return render_template('index.html', name=name, title=title)
+        return render_template('index.html', name=score_dic['ope'], title=title)
     elif request.method == 'GET':
         # リクエストフォームから名前を所得して
         name = request.args.get('name', "") if request.args.get('name', "") != "" else "No name"

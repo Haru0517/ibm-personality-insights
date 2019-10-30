@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class=""form>
+    <div class="conteinter">
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <p>知的好奇心：{{ result['ope'] }}</p>
+                    <p>誠実性：{{ result['con'] }}</p>
+                    <p>外向性：{{ result['ext'] }}</p>
+                    <p>協調性：{{ result['agr'] }}</p>
+                    <p>感情の起伏：{{ result['emo'] }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
