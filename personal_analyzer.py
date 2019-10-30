@@ -1,6 +1,5 @@
-import requests
+
 from ibm_watson import PersonalityInsightsV3
-from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 import json
 
 
@@ -8,38 +7,31 @@ import json
 curl -X POST -u “apikey:FOlbZkEEdYCkScLMUtNoRLb86B6zWP0saMeEBMA-vIv9” --header “Content-Type: text/plain;charset=utf-8" --header “Accept: application/json” --data-binary @Desktop/profile.txt --output profile.json  “https://gateway.watsonplatform.net/personality-insights/api/v3/profile?version=2017-10-13”
 """
 
+
 def analyze_personality():
-    # APIインスタンスを生成
-    authenticator = IAMAuthenticator('FOlbZkEEdYCkScLMUtNoRLb86B6zWP0saMeEBMA-vIv9')
+    from ibm_watson import PersonalityInsightsV3
+    from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+    from os.path import join, dirname
+    import json
+
+    authenticator = IAMAuthenticator('4VRR3O-EJCsh2cl1GDzcFo77bI0wo9A9P_1apIuse6hw')
     personality_insights = PersonalityInsightsV3(
         version='2017-10-13',
         authenticator=authenticator
     )
-    personality_insights.set_service_url('https://gateway-tok.watsonplatform.net/personality-insights/api')
 
-    personality_insights.set_detailed_response(True)
-    response = personality_insights.methodName(parameters)
-    # Access response from methodName
-    print(json.dumps(response.get_result(), indent=2))
-    # Access information in response headers
-    print(response.get_headers())
-    # Access HTTP response status
-    print(response.get_status_code())
-
-    exit()
+    personality_insights.set_service_url('https://gateway.watsonplatform.net/personality-insights/api')
 
 
-    # 性格を分析
     with open('sample.txt', 'r') as profile_text:
-        profile = service.profile(
+        profile = personality_insights.profile(
             profile_text.read(),
             'application/json',
+            consumption_preferences=True,
             content_language='ja',
-            accept_language='ja').get_result()
-
-    # ファイルに書き込み
-    with open('result.json', 'w') as f:
-        json.dump(profile, f, ensure_ascii=False, indent=2)
+            accept_language='ja',
+        ).get_result()
+    print(json.dumps(profile, indent=2))
 
 
 if __name__ == '__main__':

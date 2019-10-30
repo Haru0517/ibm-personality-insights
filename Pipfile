@@ -8,8 +8,7 @@ verify_ssl = true
 [packages]
 flask = "*"
 numpy = "*"
-requests = "*"
 ibm-watson = "*"
 
 [requires]
-python_version = "3.7"
+python_version = "3.5"
