@@ -31,7 +31,22 @@ def analyze_personality():
             content_language='ja',
             accept_language='ja',
         ).get_result()
-    print(json.dumps(profile, indent=2))
+
+
+    json_obj = profile
+
+    #print(json_obj)
+
+    Ope = json_obj["personality"][0]["percentile"]
+    Con = json_obj["personality"][1]["percentile"]
+    Ext = json_obj["personality"][2]["percentile"]
+    Agr = json_obj["personality"][3]["percentile"]
+    Emo = json_obj["personality"][4]["percentile"]
+    print(Ope)
+    print(Con)
+    print(Ext)
+    print(Agr)
+    print(Emo)
 
 
 if __name__ == '__main__':
