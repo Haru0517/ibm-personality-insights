@@ -6,7 +6,7 @@ from company_recommender import get_recommended_companies, print_json_list
 from utils import write_to_json, load_json
 
 app = Flask(__name__)
-
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
 
 dummy_dic0 = {
     "ope": 0,
@@ -54,7 +54,7 @@ def personal_result():
 
 @app.route('/company_result')
 def company_result():
-    title = 'おすすめ企業リスト | Workers'
+    title = 'マッチ度ランキング | Workers'
 
     # 個人のデータを取得
     target_dic = load_json('json/target.json')
@@ -71,7 +71,17 @@ def company_result():
     return render_template('company_result.html', title=title, companies=companies)
 
 
+# No caching at all for API endpoints.
+@app.after_request
+def add_header(response):
+    # response.cache_control.no_store = True
+    response.headers['Cache-Control'] = 'no-store, no-cache, must-revalidate, post-check=0, pre-check=0, max-age=0'
+    response.headers['Pragma'] = 'no-cache'
+    response.headers['Expires'] = '-1'
+    return response
+
+
 if __name__ == '__main__':
     app.debug = True  # デバッグモードを有効化
-    app.run(host='localhost', port='8080')  # どこからでもアクセス可能に
+    app.run(host='localhost')  # どこからでもアクセス可能に
 

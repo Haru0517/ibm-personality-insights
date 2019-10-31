@@ -1,5 +1,6 @@
 import json
 from typing import List
+import numpy as np
 
 
 def load_json(filepath):
@@ -28,11 +29,19 @@ def calc_similarity(target_dic: dict, employee_dic: dict):
 
     keys = list(target_dic.keys())
 
-    ibm_profession = 0
-    for key in keys:
-        ibm_profession += (abs(target_dic[key]-employee_dic[key]))
+    # ibm_profession = 0
+    # for key in keys:
+    #     ibm_profession += (abs(target_dic[key]-employee_dic[key]))
+    #
+    # precision_profession = (1/(1+ibm_profession))*100
 
-    precision_profession = (1/(1+ibm_profession))*100
+    v1 = []
+    v2 = []
+    for key in keys:
+        v1.append(target_dic[key])
+        v2.append(employee_dic[key])
+
+    precision_profession = np.dot(v1, v2) / (np.linalg.norm(v1) * np.linalg.norm(v2))
 
     return precision_profession
 
@@ -64,16 +73,16 @@ def get_recommended_companies(target_dic):
 
 
 if __name__ == '__main__':
-    # target_dic = {'ope': 0.8243266441684023, 'con': 0.633414931260427, 'ext': 0.8117213140033163, 'agr': 0.676611520481196, 'emo': 0.5190227982392853}
+    target_dic = {'ope': 0.8243266441684023, 'con': 0.633414931260427, 'ext': 0.8117213140033163, 'agr': 0.676611520481196, 'emo': 0.5190227982392853}
     #
-    # employee_dic1 = {'ope': 0.8143266441684023, 'con': 0.623414931260427, 'ext': 0.8017213140033163, 'agr': 0.66611520481196, 'emo': 0.5090227982392853}
+    employee_dic1 = {'ope': 0.8143266441684023, 'con': 0.623414931260427, 'ext': 0.8017213140033163, 'agr': 0.66611520481196, 'emo': 0.5090227982392853}
     #
     # employee_dic2 = {'ope': 0.5555555555555555, 'con': 0.633414931260427, 'ext': 0.9999999999, 'agr': 0.99999999999, 'emo': 0.1111111111111}
     #
     # employee_dic3 = {'ope': 0.900000000000003, 'con': 0.633414931260427, 'ext': 0.8117213140033163, 'agr': 0.676611520481196, 'emo': 0.90000000000}
 
-    #ibm_its = calc_similarity(target_dic, employee_dic1)
+    ibm_its = calc_similarity(target_dic, employee_dic1)
     #ibm_consuluting = calc_similarity(target_dic, employee_dic2)
     #ibm_designer = calc_similarity(target_dic, employee_dic3)
 
-    get_recommended_companies(target_dic)
+    # get_recommended_companies(target_dic)
