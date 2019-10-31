@@ -57,7 +57,7 @@ def personal_result():
     write_to_json(target_dic, 'json/target.json')
 
     # 画像を作成
-    image_path = 'images/target.png'
+    image_path = 'static/images/target.png'
     make_big_five_graph([target_dic, dummy_dic0, dummy_dic0, dummy_dic1], image_path)
 
     return render_template('personal_result.html', title=title, result=score_dic)
@@ -75,7 +75,7 @@ def company_result():
 
     # 個人と各企業のパラメータを重ねた画像を作成
     for company in companies:
-        image_path = 'images/{0}.png'.format(company['id'])
+        image_path = 'static/images/{0}.png'.format(company['id'])
         com_param_dic = company['params']
         make_big_five_graph([target_dic, com_param_dic, dummy_dic0, dummy_dic1], image_path)
 

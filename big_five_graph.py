@@ -106,7 +106,7 @@ def make_big_five_graph(param_dic_list: list, filepath: str):
     if os.name == 'nt':
         font_path = r'c:\Windows\Fonts\meiryo.ttc'
     else:
-        font_path = 'font/ipam.ttf'
+        font_path = 'fonts/ipam.ttf'
 
     font = FontProperties(fname=font_path)
 

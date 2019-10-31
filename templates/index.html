@@ -1,22 +1,86 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="home">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-5">
-                <h1>性格診断</h1>
-            </div>
+
+<!--class="site-section bg-image gradient-1"-->
+    <div  style="background-image: url('/static/images/slider_2.jpg')">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 mx-auto text-center align-self-center">
+            <h1 class="font-weight-bold mb-0 text-white">Workers</h1>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-4 col-md-offset-5">
-                <p><a href="/personal_result">
-                    <button type="submit" class="btn btn-default">
-                        診断開始
-                    </button>
-                </a>
-                </p>
-            </div>
-        </div>
+      </div>
     </div>
-</div>
+    <center>
+    <img src="/static/images/workers2.png" max-width:100%>
+  </center>
+
+<style type="text/css">
+  div.form-group2{
+    clear; both;
+  }
+</style>
+
+
+
+
+  <div class="site-section">
+    <div class="container">
+          <h2 class="heading-21921">　　Twitter Account</h2>
+          <p class="lead">　　　　　あなたの投稿履歴から性格診断。あのDaigoが・・・</p>
+
+     <div class="row">
+        <div class="col-md-1">
+        </div>
+        <div class="col-md-5">
+           <div class="bg-light p-4 mb-4"> <!--枠の付け方-->
+            <div class="form-group2">
+              <label for="name" class="ml-2">入力フォーム</label>
+              <img src="/static/images/Twitter_Logo_Blue.png" width="100">
+              <input type="text" class="form-control m-1 form-pill" placeholder="＠" id="name">
+            </div>
+          </div>
+        </div>
+       <div class="col-md-5">
+       </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col">
+            <div class="bg-light p-4">
+              <center>
+              <a href="/personal_result">
+              <button type="submit" class="btn btn-info ">　　　　　　　　　診　　断　　　　　　　　　　</button>
+              </a>
+              </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-md-7">
+            <h1>
+            Walkers
+          </h1>
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank" >Colorlib</a>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% endblock %}
