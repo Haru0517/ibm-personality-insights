@@ -1,12 +1,10 @@
 from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 from personal_analyzer import analyze_personality
-from company_recommender import get_company_list
+from company_recommender import get_recommended_companies, print_json_list
+from utils import write_to_json, load_json
 
 app = Flask(__name__)
-
-# 個人の診断結果
-target_dic = {}
 
 
 # メッセージをランダムに表示
@@ -25,6 +23,7 @@ def index():
     title = 'ようこそ'
     message = picked_up()
     # index.htmlをレンダリングする
+
     return render_template('index.html', message=message, title=title)
 
 
@@ -35,6 +34,7 @@ def personal_result():
     # 個人のデータを取得
     score_dic = analyze_personality()
     target_dic = score_dic
+    write_to_json(target_dic, 'json/target.json')
 
     return render_template('personal_result.html', title=title, result=score_dic)
 
@@ -44,9 +44,12 @@ def company_result():
     title = 'おすすめ企業リスト'
 
     # 個人のデータを取得
-    company_list = get_company_list(target_dic)
+    target_dic = load_json('json/target.json')
 
-    return render_template('company_result.html', title=title, result=company_list)
+    # おすすめ企業のデータを取得
+    companies = get_recommended_companies(target_dic)
+
+    return render_template('company_result.html', title=title, companies=companies)
 
 
 

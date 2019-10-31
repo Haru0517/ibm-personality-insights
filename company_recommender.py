@@ -37,7 +37,7 @@ def calc_similarity(target_dic: dict, employee_dic: dict):
     return precision_profession
 
 
-def get_company_list(target_dic):
+def get_recommended_companies(target_dic):
     """類似度が高い順にソートして返す．
 
     Args:
@@ -58,6 +58,7 @@ def get_company_list(target_dic):
 
     # ソートして返す
     ret_company_list = sorted(ret_company_list, key=lambda x: x['similarity'], reverse=True)
+    print(ret_company_list)
 
     return ret_company_list
 
@@ -75,4 +76,4 @@ if __name__ == '__main__':
     #ibm_consuluting = calc_similarity(target_dic, employee_dic2)
     #ibm_designer = calc_similarity(target_dic, employee_dic3)
 
-    get_company_list(target_dic)
+    get_recommended_companies(target_dic)
