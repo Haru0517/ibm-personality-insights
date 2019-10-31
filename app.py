@@ -1,6 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
 from personal_analyzer import analyze_personality
+from big_five_graph import make_big_five_graph
 from company_recommender import get_recommended_companies, print_json_list
 from utils import write_to_json, load_json
 
@@ -34,7 +35,13 @@ def personal_result():
     # 個人のデータを取得
     score_dic = analyze_personality()
     target_dic = score_dic
+
+    # 個人のデータを保存
     write_to_json(target_dic, 'json/target.json')
+
+    # 画像を作成
+    image_path = 'images/target.png'
+    make_big_five_graph([list(target_dic.values())], image_path)
 
     return render_template('personal_result.html', title=title, result=score_dic)
 
@@ -49,11 +56,13 @@ def company_result():
     # おすすめ企業のデータを取得
     companies = get_recommended_companies(target_dic)
 
+    # 個人と各企業のパラメータを重ねた画像を作成
+    for company in companies:
+        image_path = 'images/{0}.png'.format(company['id'])
+        com_param_dic = company['params']
+        make_big_five_graph([list(target_dic.values()), list(com_param_dic.values())], image_path)
+
     return render_template('company_result.html', title=title, companies=companies)
-
-
-
-
 
 
 # /post にアクセスした時の処理

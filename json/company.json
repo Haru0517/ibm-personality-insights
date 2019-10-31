@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "company":  "IBM",
     "profession": "ITスペシャリスト",
     "params": {
@@ -11,6 +12,7 @@
     }
   },
   {
+    "id": 2,
     "company":  "IBM",
     "profession": "デザイナー",
     "params": {
@@ -22,6 +24,7 @@
     }
   },
   {
+    "id": 3,
     "company": "IBM",
     "profession": "コーポレートスタッフ",
     "params": {

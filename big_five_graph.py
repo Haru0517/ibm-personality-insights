@@ -125,7 +125,7 @@ def make_big_five_graph(params: list, filepath: str):
     title = 'Big5 診断結果'
 
     # データの色
-    colors = ['#7fffd4', '#7fffd4']
+    colors = ['#7fffd4', '#4F81BD']
 
     theta = radar_factory(len(labels), frame='polygon')  # polygon：多角形、circle：円
 
@@ -169,7 +169,7 @@ def make_big_five_graph(params: list, filepath: str):
 
 if __name__ == '__main__':
 
-    params = [[Ope1, Con1, Ext1, Agr1, Emo1], [Ope2, Con2, Ext2, Agr2, Emo2]]
+    params = [[Ope1, Con1, Ext1, Agr1, Emo1]]
     filepath = "images/sample.png"
 
     make_big_five_graph(params, filepath)
