@@ -25,29 +25,18 @@ dummy_dic1 = {
 }
 
 
-# メッセージをランダムに表示
-def picked_up():
-    messages = [
-        "こんにちは，あなたの名前を入力してください",
-        "やあ！あなたの名前はなんですか？",
-        "あなたの名前を教えてね"
-    ]
-    return np.random.choice(messages)
 
 # ここからwebアプリケーション用のルーティングを記述
 # indexにアクセスしたときの処理
 @app.route('/')
 def index():
-    title = 'ようこそ'
-    message = picked_up()
-    # index.htmlをレンダリングする
-
-    return render_template('index.html', message=message, title=title)
+    title = 'Workers'
+    return render_template('index.html', title=title)
 
 
 @app.route('/personal_result')
 def personal_result():
-    title = '診断結果'
+    title = '診断結果 | Workers'
 
     # 個人のデータを取得
     score_dic = analyze_personality()
@@ -65,7 +54,7 @@ def personal_result():
 
 @app.route('/company_result')
 def company_result():
-    title = 'おすすめ企業リスト'
+    title = 'おすすめ企業リスト | Workers'
 
     # 個人のデータを取得
     target_dic = load_json('json/target.json')
@@ -82,31 +71,7 @@ def company_result():
     return render_template('company_result.html', title=title, companies=companies)
 
 
-# /post にアクセスした時の処理
-@app.route('/post', methods=['GET', 'POST'])
-def post():
-    title = "こんにちは"
-    if request.method == 'POST':
-        # リクエストフォームから名前を所得して
-        name = request.form['name']
-
-        # 個人のデータを取得
-        score_dic = analyze_personality()
-
-        # index.html をレンダリングする
-        return render_template('index.html', name=score_dic['ope'], title=title)
-    elif request.method == 'GET':
-        # リクエストフォームから名前を所得して
-        name = request.args.get('name', "") if request.args.get('name', "") != "" else "No name"
-
-        # index.html をレンダリングする
-        return render_template('index.html', name=name, title=title)
-    else:
-        # エラーなどでリダイレクトしたいとき
-        return redirect(url_for('index'))
-
-
 if __name__ == '__main__':
     app.debug = True  # デバッグモードを有効化
-    app.run(host='0.0.0.0')  # どこからでもアクセス可能に
+    app.run(host='localhost', port='8080')  # どこからでもアクセス可能に
 

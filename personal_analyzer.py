@@ -1,5 +1,6 @@
 from ibm_watson import PersonalityInsightsV3
 from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
+from utils import write_to_json
 
 
 """
@@ -31,6 +32,7 @@ def analyze_personality():
         ).get_result()
 
     json_obj = profile
+    write_to_json(json_obj, 'json/result.json')
 
     ope = json_obj["personality"][0]["percentile"]
     con = json_obj["personality"][1]["percentile"]

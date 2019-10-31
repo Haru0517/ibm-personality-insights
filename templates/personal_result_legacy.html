@@ -1,0 +1,40 @@
+{% extends "layout.html" %}
+{% block content %}
+<div class="personal-result">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 col-md-offset-5">
+                <h1>診断結果</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/static/images/target.png" alt="" width="600">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div>
+                    <p>知的好奇心：{{ result['ope'] }}</p>
+                    <p>誠実性：{{ result['con'] }}</p>
+                    <p>外向性：{{ result['ext'] }}</p>
+                    <p>協調性：{{ result['agr'] }}</p>
+                    <p>感情の起伏：{{ result['emo'] }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p>あなたの性格は...</p>
+                <h3>誠実性タイプ</h3>
+                <p>です</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <a href="/company_result">次へ</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

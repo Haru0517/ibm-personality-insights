@@ -175,6 +175,6 @@ if __name__ == '__main__':
     Emo2 = 0.3898815263207158
 
     # params = [[Ope1, Con1, Ext1, Agr1, Emo1]]
-    filepath = "images/sample.png"
+    # filepath = "images/sample.png"
 
     # make_big_five_graph(params, filepath)
