@@ -107,3 +107,4 @@ venv.bak/
 # custom
 .vscode
 .DS_Store
+.idea
