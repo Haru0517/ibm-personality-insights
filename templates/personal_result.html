@@ -1,40 +1,193 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="personal-result">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4 col-md-offset-5">
-                <h1>診断結果</h1>
-            </div>
+
+
+<!--class="site-section bg-image gradient-1"-->
+    <div  style="background-image: url('/static/images/slider_2.jpg')">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-7 mx-auto text-center align-self-center">
+            <h1 class="font-weight-bold mb-0 text-white">Workers</h1>
+          </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <img src="/static/images/target.png" alt="" width="600">
+      </div>
+    </div>
+
+
+    <br>
+    <br>
+    <br>
+
+
+    <div class="row">
+      <div class="col">
+        <center>
+          <img src="/static/images/target.png" width="450">
+        </center>
+      </div>
+        <div class="col">
+            <div class="row mb-4">
+              <div class="col-md-7">
+                <h2 class="heading-21921">あなたの特徴は？</h2>
+              </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div>
-                    <p>知的好奇心：{{ result['ope'] }}</p>
-                    <p>誠実性：{{ result['con'] }}</p>
-                    <p>外向性：{{ result['ext'] }}</p>
-                    <p>協調性：{{ result['agr'] }}</p>
-                    <p>感情の起伏：{{ result['emo'] }}</p>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <p>あなたの性格は...</p>
-                <h3>誠実性タイプ</h3>
-                <p>です</p>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <a href="/company_result">次へ</a>
-            </div>
+          <center>
+            <div class="bg-light p-5">
+              <p>表現に富むタイプです。</p>
+              <p>自制心があるタイプです。自分の欲望をコントロールできますし、強烈な欲望を持ちません。哲学的なタイプです。新しいアイディアに興味をそそられ、進んで受け入れ、探求することを好みます。また、精力的なタイプです。ペースが速く、多様な活動でスケジュールを埋めることを好みます。帰属につながる体験を好みます。生活を楽しむことと成功することの両方にあまりこだわりません。単なる個人の楽しみよりも大きな目標を伴う行動を優先します。また自分の才能を誇示することにあまり拘らず意思決定します。
+          </div>
+          </center>
         </div>
     </div>
-</div>
+
+
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col">
+            <center>
+              <button class="btn btn-outline-primary">　　　　　　　　　　　企業マッチ検索　　　　　　　　　　</button>
+            </center>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row mb-4">
+          <div class="col-md-7">
+            <h2 class="heading-21921">Big5とは</h2>
+            <p class="lead">世界でもっとも信頼性の高い性格分析</p>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col">
+            <div class="bg-light p-4">
+              <center>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter1"> 　　　知的好奇心　　　 </button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter2"> 　　　感情の起伏　　　 </button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter3"> 　　　協　調　性　　　 </button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter4"> 　　　外　向　性　　　 </button>
+              <button class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter5"> 　　　誠　実　性　　　 </button>
+            </center>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-md-7">
+            <h1>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Walkers
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+          </h1>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">知的好奇心</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><span class="icon-close2"></span></span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <p>知的、美的、文化的に新しい経験に開放的な傾向</p>
+          <p>好奇心　審美眼　アイデア</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">感情の起伏</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><span class="icon-close2"></span></span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <p>落ち込みやすいなど感情面・情緒面で不安定な傾向</p>
+          <p>ストレス　不安　衝動的</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">協調性</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><span class="icon-close2"></span></span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <p>バランスを取り協調的な行動を取る傾向</p>
+          <p>思いやり　優しさ　献身的</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter4" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">外向性</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><span class="icon-close2"></span></span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <p>興味関心が外界に向けられる傾向</p>
+          <p>積極性　社交性　明るさ</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="modal fade" id="exampleModalCenter5" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content rounded-0">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalCenterTitle">誠実性</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true"><span class="icon-close2"></span></span>
+            </button>
+          </div>
+          <div class="modal-body">
+          <p>責任感があり勤勉で真面目な傾向</p>
+          <p>自己規律　良心　慎重</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="site-section bg-light">
+      <div class="container">
+        <div class="row justify-content-center text-center">
+          <div class="col-md-7">
+            <p>
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by Walkers
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
 {% endblock %}
