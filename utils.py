@@ -13,7 +13,7 @@ def write_to_json(json_data: dict, filepath: str):
 
 
 def load_json(filepath: str) -> dict:
-    """
+    """jsonファイルをロード．
 
     Args:
         filepath (str): ロードするjsonファイルパス．
