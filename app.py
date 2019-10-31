@@ -8,6 +8,23 @@ from utils import write_to_json, load_json
 app = Flask(__name__)
 
 
+dummy_dic0 = {
+    "ope": 0,
+    "con": 0,
+    "ext": 0,
+    "agr": 0,
+    "emo": 0
+}
+
+dummy_dic1 = {
+    "ope": 1,
+    "con": 1,
+    "ext": 1,
+    "agr": 1,
+    "emo": 1
+}
+
+
 # メッセージをランダムに表示
 def picked_up():
     messages = [
@@ -41,7 +58,7 @@ def personal_result():
 
     # 画像を作成
     image_path = 'images/target.png'
-    make_big_five_graph([list(target_dic.values())], image_path)
+    make_big_five_graph([target_dic, dummy_dic0, dummy_dic0, dummy_dic1], image_path)
 
     return render_template('personal_result.html', title=title, result=score_dic)
 
@@ -60,7 +77,7 @@ def company_result():
     for company in companies:
         image_path = 'images/{0}.png'.format(company['id'])
         com_param_dic = company['params']
-        make_big_five_graph([list(target_dic.values()), list(com_param_dic.values())], image_path)
+        make_big_five_graph([target_dic, com_param_dic, dummy_dic0, dummy_dic1], image_path)
 
     return render_template('company_result.html', title=title, companies=companies)
 

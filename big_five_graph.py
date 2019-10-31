@@ -14,17 +14,7 @@ from matplotlib.font_manager import FontProperties
 
 
 #****************************************
-Ope1 = 0.9970814244982862
-Con1 = 0.986401677449357
-Ext1 = 0.08530058556548387
-Agr1 = 0.18753528603194114
-Emo1 = 0.3898815263207158
 
-Ope2 = 0.9970814244982862
-Con2 = 0.986401677449357
-Ext2 = 0.08530058556548387
-Agr2 = 0.18753528603194114
-Emo2 = 0.3898815263207158
 
 #****************************************
 
@@ -110,7 +100,7 @@ def radar_factory(num_vars, frame='circle'):
     return theta
 
 
-def make_big_five_graph(params: list, filepath: str):
+def make_big_five_graph(param_dic_list: list, filepath: str):
 
     # 日本語フォントの利用
     if os.name == 'nt':
@@ -121,11 +111,15 @@ def make_big_five_graph(params: list, filepath: str):
     font = FontProperties(fname=font_path)
 
     # ラベルとデータ
-    labels = ['情緒安定性', '開放性', '勤勉性', '勤勉性', '外向性']
+    labels = ['知的好奇心', '誠実性', '外向性', '協調性', '感情の起伏']
     title = 'Big5 診断結果'
+    params = []
+    for param_dic in param_dic_list:
+        params.append([param_dic['ope'], param_dic['con'], param_dic['ext'], param_dic['agr'], param_dic['emo']])
+    print(params)
 
     # データの色
-    colors = ['#7fffd4', '#4F81BD']
+    colors = ['#7fffd4', '#4F81BD', '#000000', '#ffffff']
 
     theta = radar_factory(len(labels), frame='polygon')  # polygon：多角形、circle：円
 
@@ -168,8 +162,19 @@ def make_big_five_graph(params: list, filepath: str):
 
 
 if __name__ == '__main__':
+    Ope1 = 0.9970814244982862
+    Con1 = 0.986401677449357
+    Ext1 = 0.08530058556548387
+    Agr1 = 0.18753528603194114
+    Emo1 = 0.3898815263207158
 
-    params = [[Ope1, Con1, Ext1, Agr1, Emo1]]
+    Ope2 = 0.9970814244982862
+    Con2 = 0.986401677449357
+    Ext2 = 0.08530058556548387
+    Agr2 = 0.18753528603194114
+    Emo2 = 0.3898815263207158
+
+    # params = [[Ope1, Con1, Ext1, Agr1, Emo1]]
     filepath = "images/sample.png"
 
-    make_big_five_graph(params, filepath)
+    # make_big_five_graph(params, filepath)
