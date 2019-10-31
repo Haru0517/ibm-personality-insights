@@ -1,6 +1,5 @@
-
 from ibm_watson import PersonalityInsightsV3
-import json
+from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 
 
 """
@@ -9,11 +8,11 @@ curl -X POST -u “apikey:FOlbZkEEdYCkScLMUtNoRLb86B6zWP0saMeEBMA-vIv9” --head
 
 
 def analyze_personality():
-    from ibm_watson import PersonalityInsightsV3
-    from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
-    from os.path import join, dirname
-    import json
+    """個人のテキストをクエリとし，PersonalityInsightsから性格パラメータを取得する．
 
+    Returns:
+        dict: Big 5のパラメータ． keyは{'ope', 'con', 'ext', 'agr', 'emo'}
+    """
     authenticator = IAMAuthenticator('4VRR3O-EJCsh2cl1GDzcFo77bI0wo9A9P_1apIuse6hw')
     personality_insights = PersonalityInsightsV3(
         version='2017-10-13',
@@ -21,7 +20,6 @@ def analyze_personality():
     )
 
     personality_insights.set_service_url('https://gateway.watsonplatform.net/personality-insights/api')
-
 
     with open('sample.txt', 'r') as profile_text:
         profile = personality_insights.profile(
@@ -32,10 +30,7 @@ def analyze_personality():
             accept_language='ja',
         ).get_result()
 
-
     json_obj = profile
-
-    #print(json_obj)
 
     ope = json_obj["personality"][0]["percentile"]
     con = json_obj["personality"][1]["percentile"]
