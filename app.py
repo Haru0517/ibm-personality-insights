@@ -25,7 +25,6 @@ dummy_dic1 = {
 }
 
 
-
 # ここからwebアプリケーション用のルーティングを記述
 # indexにアクセスしたときの処理
 @app.route('/')
@@ -34,30 +33,15 @@ def index():
     return render_template('index.html', title=title)
 
 
-@app.route('/personal_result')
-def personal_result():
-    title = '診断結果 | Workers'
-
-    # 個人のデータを取得
-    score_dic = analyze_personality()
-    target_dic = score_dic
-
-    # 個人のデータを保存
-    write_to_json(target_dic, 'json/target.json')
-
-    # 画像を作成
-    image_path = 'static/images/target.png'
-    make_big_five_graph([target_dic, dummy_dic0, dummy_dic0, dummy_dic1], image_path)
-
-    return render_template('personal_result.html', title=title, result=score_dic)
-
-
 @app.route('/company_result')
 def company_result():
     title = 'マッチ度ランキング | Workers'
 
     # 個人のデータを取得
-    target_dic = load_json('json/target.json')
+    target_dic = analyze_personality()
+
+    # 個人のデータを保存
+    write_to_json(target_dic, 'json/target.json')
 
     # おすすめ企業のデータを取得
     companies = get_recommended_companies(target_dic)
@@ -69,6 +53,20 @@ def company_result():
         make_big_five_graph([target_dic, com_param_dic, dummy_dic0, dummy_dic1], image_path)
 
     return render_template('company_result.html', title=title, companies=companies)
+
+
+@app.route('/personal_result')
+def personal_result():
+    title = '診断結果 | Workers'
+
+    # 個人のデータを取得
+    target_dic = load_json('json/target.json')
+
+    # 画像を作成
+    image_path = 'static/images/target.png'
+    make_big_five_graph([target_dic, dummy_dic0, dummy_dic0, dummy_dic1], image_path)
+
+    return render_template('personal_result.html', title=title, result=target_dic)
 
 
 # No caching at all for API endpoints.
