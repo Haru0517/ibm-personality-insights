@@ -109,4 +109,4 @@ venv.bak/
 .DS_Store
 .idea
 json/target.json
-images/
+json/result.json
