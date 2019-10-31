@@ -34,6 +34,16 @@ def personal_result():
     return render_template('personal_result.html', title=title, result=score_dic)
 
 
+@app.route('/company_result')
+def company_result():
+    title = 'おすすめ企業リスト'
+
+    # 個人のデータを取得
+    company_list = {}
+
+    return render_template('company_result.html', title=title, result=company_list)
+
+
 
 
 
