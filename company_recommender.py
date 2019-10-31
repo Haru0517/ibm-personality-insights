@@ -32,7 +32,7 @@ def calc_similarity(target_dic: dict, employee_dic: dict):
     for key in keys:
         ibm_profession += (abs(target_dic[key]-employee_dic[key]))
 
-    precision_profession: float = (1/(1+ibm_profession))*100
+    precision_profession = (1/(1+ibm_profession))*100
 
     return precision_profession
 
