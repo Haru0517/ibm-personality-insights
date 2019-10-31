@@ -1,8 +1,12 @@
 from flask import Flask, render_template, request, redirect, url_for
 import numpy as np
-import personal_analyzer
+from personal_analyzer import analyze_personality
+from company_recommender import get_company_list
 
 app = Flask(__name__)
+
+# 個人の診断結果
+target_dic = {}
 
 
 # メッセージをランダムに表示
@@ -29,7 +33,8 @@ def personal_result():
     title = '診断結果'
 
     # 個人のデータを取得
-    score_dic = personal_analyzer.analyze_personality()
+    score_dic = analyze_personality()
+    target_dic = score_dic
 
     return render_template('personal_result.html', title=title, result=score_dic)
 
@@ -39,7 +44,7 @@ def company_result():
     title = 'おすすめ企業リスト'
 
     # 個人のデータを取得
-    company_list = {}
+    company_list = get_company_list(target_dic)
 
     return render_template('company_result.html', title=title, result=company_list)
 
@@ -57,7 +62,7 @@ def post():
         name = request.form['name']
 
         # 個人のデータを取得
-        score_dic = personal_analyzer.analyze_personality()
+        score_dic = analyze_personality()
 
         # index.html をレンダリングする
         return render_template('index.html', name=score_dic['ope'], title=title)
