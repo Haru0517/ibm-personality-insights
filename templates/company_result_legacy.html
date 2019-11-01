@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% block content %}
+<div id="company-result">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-md-offset-1">
+                <h1>おすすめ企業リスト</h1>
+            </div>
+        </div>
+    </div>
+    {% for company in companies %}
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">企業名</div>
+            <div class="col-md-4">{{ company['company'] }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">職業</div>
+            <div class="col-md-4">{{ company['profession'] }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">オススメ度</div>
+            <div class="col-md-4">{{ company['similarity'] }}</div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <img src="/static/images/{{ company['id'] }}.png" alt="{{ company['id'] }}" width="400">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">------------------------------------------------------------------------</div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

@@ -106,3 +106,7 @@ venv.bak/
 
 # custom
 .vscode
+.DS_Store
+.idea
+json/target.json
+json/result.json
