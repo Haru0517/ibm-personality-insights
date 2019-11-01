@@ -62,7 +62,7 @@ def get_recommended_companies(target_dic):
     ret_company_list = []
     for company in company_list:
         sim = calc_similarity(target_dic, company['params'])
-        company['similarity'] = sim
+        company['similarity'] = int(sim*100)
         ret_company_list += [company]
 
     # ソートして返す
