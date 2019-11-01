@@ -6,8 +6,12 @@
 - pipenv
 
 
+## Setup
+1. `pip install --upgrade pip`
+2. `pip install pipenv` or `pip install --user pipenv`
+3. Clone or Download this project, and `pipenv install`
+
 ## Usage
-- `pipenv install`
-- `pipenv shell`
-- `python app.py`
-- Go to http://0.0.0.0:5000/
+1. `pipenv shell`
+2. `python app.py`
+3. Go to http://localhost:5000/ 
