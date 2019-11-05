@@ -110,3 +110,4 @@ venv.bak/
 .idea
 json/target.json
 json/result.json
+apikey.txt
