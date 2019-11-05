@@ -3,18 +3,16 @@ from ibm_cloud_sdk_core.authenticators import IAMAuthenticator
 from utils import write_to_json
 
 
-"""
-curl -X POST -u “apikey:FOlbZkEEdYCkScLMUtNoRLb86B6zWP0saMeEBMA-vIv9” --header “Content-Type: text/plain;charset=utf-8" --header “Accept: application/json” --data-binary @Desktop/profile.txt --output profile.json  “https://gateway.watsonplatform.net/personality-insights/api/v3/profile?version=2017-10-13”
-"""
-
-
 def analyze_personality():
     """個人のテキストをクエリとし，PersonalityInsightsから性格パラメータを取得する．
 
     Returns:
         dict: Big 5のパラメータ． keyは{'ope', 'con', 'ext', 'agr', 'emo'}
     """
-    authenticator = IAMAuthenticator('4VRR3O-EJCsh2cl1GDzcFo77bI0wo9A9P_1apIuse6hw')
+    with open('apikey.txt', 'r') as f:
+        api_key = f.read()
+
+    authenticator = IAMAuthenticator(api_key)
     personality_insights = PersonalityInsightsV3(
         version='2017-10-13',
         authenticator=authenticator
