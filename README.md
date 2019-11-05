@@ -12,7 +12,8 @@
 3. Clone or Download this project, and `pipenv install`
 4. Add `apikey.txt` and paste your *APIKey* into it
 
-```Directory
+[Directory]
+```
 ibm-personality-insights
 ├── app.py
 ├── personal_analyzer.py
@@ -21,7 +22,8 @@ ibm-personality-insights
 ├── ...
 ```
 
-```apikey.txt
+[apikey.txt]
+```
 [your APIKey]
 ```
 
